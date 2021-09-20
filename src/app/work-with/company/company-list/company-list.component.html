@@ -1,0 +1,7 @@
+<div>
+    <mat-card *ngFor='let company of companies' class="m-2">
+        <h3>{{company.Name}}</h3>
+        <a>{{company.WhoWeAre}}</a>
+        <button (click)="blockCompany(company._id)">Block Company</button>
+    </mat-card>
+</div>

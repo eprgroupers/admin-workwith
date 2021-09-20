@@ -1,0 +1,38 @@
+* {
+  color: rgba(255, 255, 255, 0.836) !important;
+}
+.form-input-text {
+  border: rgb(255, 255, 255);
+  color: white;
+  background-color: #1f1e1e;
+  padding: 0.5rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 2px 0 #252525;
+}
+.form-control {
+  background-color: rgb(29, 29, 29);
+  color: rgb(233, 230, 230);
+}
+.full-form {
+  background-color: rgb(31, 31, 31);
+  padding: 30px;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+}
+.form-section {
+  padding-top: 9px !important;
+}
+
+.upload {
+  background-color: rgba(0, 0, 0, 0.158);
+  /* height: 100%; */
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-control .button {
+  color: rgb(66, 0, 0);
+  /* padding: 20px; */
+  /* background-color: red !important; */
+}

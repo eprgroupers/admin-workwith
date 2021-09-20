@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  color: rgba(255, 255, 255, 0.897) !important;
+}
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: rgba(226, 222, 222, 0.904);
+}
+
+.button {
+  background-color: #1f1e1e;
+  padding: 0.5rem;
+  color: white;
+  border: rgb(255, 255, 255);
+  border-radius: 6px;
+}
+.button:hover {
+  border: white;
+  color: #1f1e1e;
+  background-color: #3b3a3a;
+}
+.button:active {
+  background-color: #777373;
+}

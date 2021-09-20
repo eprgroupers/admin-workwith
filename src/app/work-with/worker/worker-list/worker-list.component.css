@@ -1,0 +1,12 @@
+.example-card {
+  margin-top: 5px;
+  margin-bottom: 5px !important;
+}
+.profile {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+}
+.card-div :hover {
+  cursor: pointer;
+}

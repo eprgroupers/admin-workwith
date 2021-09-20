@@ -1,0 +1,59 @@
+<div>
+    <form class="full-form bg-dark" [formGroup]="Company">
+        <h2>Regiter A company</h2>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-section">
+                    <label for="name">Company Name</label>
+                    <input type="text" class="form-control" formControlName="Name">
+                </div>
+                <div class="form-section">
+                    <label for="name">WhoWeAre</label>
+                    <input type="text" class="form-control" formControlName="WhoWeAre">
+                </div>
+                <div class="form-section">
+                    <label for="name">Mission</label>
+                    <input type="text" class="form-control" formControlName="Mission">
+                </div>
+                <div class="form-section">
+                    <label for="name">Vision</label>
+                    <input type="text" class="form-control" formControlName="Vision">
+                </div>
+            </div>
+            <div class="col-6 upload">
+                <div>
+                    <label for="">Image </label><br>
+                    <input type="file" class="form-control upload">
+                    <img src="">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-section col-6">
+                <label for="name">RegNumber</label>
+                <input type="text" class="form-control" formControlName="RegNumber">
+            </div>
+            <div class="form-section col-6">
+                <label for="name">Ownership</label>
+                <input type="text" class="form-control" formControlName="Ownership">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-section col-6">
+                <label for="name">ContactNo</label>
+                <input type="text" class="form-control" formControlName="ContactNo">
+            </div>
+            <div class="form-section col-6">
+                <label for="name">Email</label>
+                <input type="text" class="form-control" formControlName="Email">
+            </div>
+        </div>
+        <div class="form-section">
+            <label for="name">Address</label>
+            <textarea class='form-control' formControlName="Address"></textarea>
+        </div>
+        <div class="form-section">
+            <button (click)="submit()">Submit</button>
+        </div>
+    </form>
+</div>

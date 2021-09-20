@@ -1,0 +1,11 @@
+<div *ngIf="loading; else elseBlock">
+    <mat-spinner class="mx-auto color" [strokeWidth]='5' [diameter]='30'>
+    </mat-spinner>
+</div>
+<ng-template #elseBlock>
+    <div>
+        <div class="container">
+            {{workerDetail|json}}
+        </div>
+    </div>
+</ng-template>

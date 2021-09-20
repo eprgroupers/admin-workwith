@@ -1,0 +1,101 @@
+<div>
+    <form class="full-form bg-dark" [formGroup]="Worker">
+        <div class="text-center">
+            <h2>Register A Worker</h2>
+
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-section">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" formControlName="Name">
+                </div>
+                <div class="form-section">
+                    <label for="name">Job</label>
+                    <select formControlName="District" class="form-control">
+                        <option value="">Select Your Job</option>
+                        <option *ngFor="let job of jobList" value={{job.Job}}>{{job.Job}}</option>
+                    </select>
+                </div>
+                <div class="form-section">
+                    <label for="name">User Name <small>*This will be their id</small></label>
+                    <input type="text" (blur)="checkUserName()" class="form-control" formControlName="UserName">
+                    <small>{{userNameErrorMsg}}</small>
+                    <small>{{userNameAvailableMsg}}</small>
+                </div>
+                <div class="form-section">
+                    <label for="name">Age</label>
+                    <input type="number" class="form-control" formControlName="Age">
+                </div>
+                <div class="form-section">
+                    <label for="name">Experience</label>
+                    <input type="number" class="form-control" formControlName="Experience">
+                </div>
+                <div class="form-section">
+                    <label for="name">District</label>
+                    <select formControlName="District" class="form-control">
+                        <option value="">Select Your District</option>
+                        <option value="jaffna">Jaffna</option>
+                        <!-- <option value="mulaithivu">Mullaithivu</option>
+                        <option value="kilinochi">Kilinochi</option>
+                        <option value="mannar">Mannar</option>
+                        <option value="vavuniya">Vavuniya</option> -->
+                    </select>
+                </div>
+                <div class="form-section">
+                    <label for="name">NIC No</label>
+                    <input type="text" class="form-control" formControlName="NICNo">
+                </div>
+                <div class="form-section">
+                    <label for="name">ContactNo</label>
+                    <input type="text" class="form-control" formControlName="ContactNo">
+                </div>
+            </div>
+            <div class="col-6 upload">
+                <div>
+                    <label for="">Image </label><br>
+                    <input formControlName="ProfileImg" type="file" class="form-control upload"
+                        (change)="onFileChange($event)" accept=".jpg, .png, .jpeg">
+                    <img [src]="imgSrc" class="profile"
+                        onerror="this.onerror=null;this.src='assets/img/profile-worker.jpg';">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-section col-12">
+                <label for="name">Description</label>
+                <textarea class="form-control" formControlName="Description"></textarea>
+            </div>
+            <div class="col-lg-6 p-2">
+                <button mat-flat-button class="button" (click)="addWorkArea()">
+                    <mat-icon>location_searching</mat-icon> Add Work Area
+                </button>
+                <div formArrayName='WorkArea'>
+                    <div class="form-group" *ngFor='let area of workAreaControls; let i = index'>
+                        <input type="text" class="form-control " [formControlName]='i' placeholder="Enter Data">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="p-3 text-center">
+                    <p class="mb-0">Rating</p>
+                    <button mat-icon-button *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i"
+                        (click)="onClick(i+1)" matTooltip={{ratingId+1}} matTooltipPosition="above" class="star">
+                        <mat-icon>
+                            {{showIcon(i)}}
+                        </mat-icon>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="form-section">
+            <button mat-flat-button class="button" (click)="submit()">
+                Submit
+            </button>
+            {{Worker.value|json}}{{jobList|json}}
+        </div>
+    </form>
+</div>
