@@ -1,6 +1,12 @@
+<div *ngIf="loading; else elseArea">
+    <mat-spinner class="mx-auto color" [strokeWidth]='5' [diameter]='30'>
+    </mat-spinner>
+</div>
+<ng-template #elseArea>
 <div>
+    
     <mat-card class="example-card" *ngFor="let worker of workerList">
-        <div class="card-div ">
+        <div class="card-div " routerLink='../view/{{worker._id}}/active'>
             <mat-card-title-group>
                 <mat-card-title>{{worker.Name}}</mat-card-title>
                 <mat-card-subtitle>{{worker.Age}}</mat-card-subtitle>
@@ -16,17 +22,19 @@
                     </span>
                 </div>
             </mat-card-content>
+        </div>
             <div class="container p-0 m-0">
                 <div class="row text-center p-0 m-0">
                     <div class="col-lg-6 p-0 m-0">
-                        <!-- <button mat-stroked-button color="accent">Block Worker</button> -->
+                        <!-- <button mat-stroked-button color="accent">Block Worker</button> -->    
                     </div>
                     <div class="col-lg-6 p-0 m-0">
-                        <button mat-stroked-button color="accent">Block Worker</button>
+                        <button mat-stroked-button color="accent" (click)="unblockAworker(worker._id)">Unblock Worker</button>
                     </div>
                 </div>
 
             </div>
-        </div>
+        {{worker|json}}
     </mat-card>
 </div>
+</ng-template>

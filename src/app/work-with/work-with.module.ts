@@ -13,6 +13,8 @@ import { WorkerListComponent } from './worker/worker-list/worker-list.component'
 import { WorkerComponent } from './worker/worker.component';
 import { BlockedWorkersComponent } from './worker/blocked-workers/blocked-workers.component';
 import { WorkerPageComponent } from './worker/worker-page/worker-page.component';
+import { AddJobComponent } from './Job/add-job/add-job.component';
+import { JobComponent } from './Job/job.component';
 
 
 
@@ -27,6 +29,8 @@ import { WorkerPageComponent } from './worker/worker-page/worker-page.component'
     WorkerComponent,
     BlockedWorkersComponent,
     WorkerPageComponent,
+    AddJobComponent,
+    JobComponent,
   ],
   imports: [
     CommonModule, MaterialModule, HttpClientModule, AppRoutingModule,

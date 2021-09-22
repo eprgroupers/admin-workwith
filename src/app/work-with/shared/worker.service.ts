@@ -17,11 +17,11 @@ export class WorkerService {
   getBlockedWorkers() {
     return this.http.get(environment.configURI + "/worker/blockedworker")
   }
-  blockWorker(id: any) {
+  blockWorker(id: String) {
     let data = { id: id }
     return this.http.patch(environment.configURI + '/worker/blockworker', data)
   }
-  unblockWorker(id: any) {
+  unblockWorker(id: String) {
     let data = { id: id }
     return this.http.patch(environment.configURI + '/worker/unblockworker', data)
   }
@@ -29,6 +29,6 @@ export class WorkerService {
     return this.http.get(environment.configURI + '/worker/id/' + id)
   }
   checkUserNameAvailability(userName: string) {
-    return this.http.get(environment.configURI + '/worker/username/' + userName, { responseType: 'text' })
+    return this.http.get(environment.configURI + '/worker/by-username/' + userName, { responseType: 'text' })
   }
 }

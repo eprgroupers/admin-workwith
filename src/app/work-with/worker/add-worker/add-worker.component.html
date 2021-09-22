@@ -12,8 +12,8 @@
                 </div>
                 <div class="form-section">
                     <label for="name">Job</label>
-                    <select formControlName="District" class="form-control">
-                        <option value="">Select Your Job</option>
+                    <select formControlName="Job" class="form-control">
+                        <option value="" selected disabled hidden>Select Your Job</option>
                         <option *ngFor="let job of jobList" value={{job.Job}}>{{job.Job}}</option>
                     </select>
                 </div>
@@ -34,7 +34,7 @@
                 <div class="form-section">
                     <label for="name">District</label>
                     <select formControlName="District" class="form-control">
-                        <option value="">Select Your District</option>
+                        <option value="" selected disabled hidden>Select Your District</option>
                         <option value="jaffna">Jaffna</option>
                         <!-- <option value="mulaithivu">Mullaithivu</option>
                         <option value="kilinochi">Kilinochi</option>
@@ -43,18 +43,26 @@
                     </select>
                 </div>
                 <div class="form-section">
+                    <label for="name">Address</label>
+                    <input type="text" class="form-control" formControlName="Address">
+                </div>
+                <div class="form-section">
                     <label for="name">NIC No</label>
                     <input type="text" class="form-control" formControlName="NICNo">
                 </div>
                 <div class="form-section">
-                    <label for="name">ContactNo</label>
+                    <label for="name">Contact No</label>
                     <input type="text" class="form-control" formControlName="ContactNo">
+                </div>
+                <div class="form-section">
+                    <label for="name">Whatsup No</label>
+                    <input type="text" class="form-control" formControlName="WhatsUpNo">
                 </div>
             </div>
             <div class="col-6 upload">
                 <div>
                     <label for="">Image </label><br>
-                    <input formControlName="ProfileImg" type="file" class="form-control upload"
+                    <input  type="file" class="form-control upload"
                         (change)="onFileChange($event)" accept=".jpg, .png, .jpeg">
                     <img [src]="imgSrc" class="profile"
                         onerror="this.onerror=null;this.src='assets/img/profile-worker.jpg';">
@@ -80,22 +88,19 @@
                 <div class="p-3 text-center">
                     <p class="mb-0">Rating</p>
                     <button mat-icon-button *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i"
-                        (click)="onClick(i+1)" matTooltip={{ratingId+1}} matTooltipPosition="above" class="star">
+                        (click)="onClick(i+1)" matTooltip={{ratingId}} matTooltipPosition="above" class="star">
                         <mat-icon>
                             {{showIcon(i)}}
                         </mat-icon>
                     </button>
                 </div>
             </div>
-
         </div>
-
-
         <div class="form-section">
             <button mat-flat-button class="button" (click)="submit()">
                 Submit
             </button>
-            {{Worker.value|json}}{{jobList|json}}
+            {{Worker.value|json}}{{jobList|json}}{{Worker.status}}
         </div>
     </form>
 </div>

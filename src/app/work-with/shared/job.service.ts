@@ -11,4 +11,10 @@ export class JobService {
   getJobs() {
     return this.http.get(environment.configURI + "/job")
   }
+
+  postJob(data:any) {
+    console.log(data);
+    return this.http.post(environment.configURI + "/job", data)
+  }
+
 }

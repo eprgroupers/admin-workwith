@@ -4,6 +4,8 @@ import { AddCompanyComponent } from './work-with/company/add-company/add-company
 import { BlockedCompaniesComponent } from './work-with/company/blocked-companies/blocked-companies.component';
 import { CompanyListComponent } from './work-with/company/company-list/company-list.component';
 import { CompanyComponent } from './work-with/company/company.component';
+import { AddJobComponent } from './work-with/Job/add-job/add-job.component';
+import { JobComponent } from './work-with/Job/job.component';
 import { AddWorkerComponent } from './work-with/worker/add-worker/add-worker.component';
 import { BlockedWorkersComponent } from './work-with/worker/blocked-workers/blocked-workers.component';
 import { WorkerListComponent } from './work-with/worker/worker-list/worker-list.component';
@@ -66,7 +68,21 @@ const routes: Routes = [
       component: WorkerPageComponent
     }
     ]
-  }
+  },
+  {
+    path: 'job',
+    component: JobComponent,
+    children: [{
+      path: '',
+      redirectTo: "add-new",
+      pathMatch: "full"
+    },
+    {
+      path: "add-new",
+      component: AddJobComponent
+    }
+    ]
+  },
 ];
 
 @NgModule({
