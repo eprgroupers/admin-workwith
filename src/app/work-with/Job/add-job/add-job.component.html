@@ -20,7 +20,7 @@
                 <div class="form-section">
                     <label for="">Job Image </label><br>
                     <input formControlName="Image" type="file" class="form-control upload"
-                    (change)="onFileChange($event)"  accept=".jpg, .png, .jpeg">
+                        (change)="onFileChange($event)" accept=".jpg, .png, .jpeg">
                     <img [src]="imgSrc" class="profile"
                         onerror="this.onerror=null;this.src='assets/img/profile-worker.jpg';">
                 </div>
@@ -32,6 +32,5 @@
                 Submit
             </button>
         </div>
-        {{Jobs.value|json}}
     </form>
 </div>

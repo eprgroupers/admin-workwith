@@ -9,10 +9,10 @@ export class ReviewService {
 
   constructor(private http: HttpClient) { }
 
-  postReview(data:any){
-    console.log(data);
-    return this.http.post(environment.configURI +'/worker/review',data)
-    
-    
+  postReview(data: any) {
+    return this.http.post(environment.configURI + '/worker/review', data)
+  }
+  getReviewsOfWorker(id: string) {
+    return this.http.get(environment.configURI + `/worker/review/${id}`)
   }
 }

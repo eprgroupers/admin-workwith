@@ -62,8 +62,8 @@
             <div class="col-6 upload">
                 <div>
                     <label for="">Image </label><br>
-                    <input  type="file" class="form-control upload"
-                        (change)="onFileChange($event)" accept=".jpg, .png, .jpeg">
+                    <input type="file" class="form-control upload" (change)="onFileChange($event)"
+                        accept=".jpg, .png, .jpeg">
                     <img [src]="imgSrc" class="profile"
                         onerror="this.onerror=null;this.src='assets/img/profile-worker.jpg';">
                 </div>

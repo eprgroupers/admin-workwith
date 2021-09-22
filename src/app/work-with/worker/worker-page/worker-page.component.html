@@ -4,8 +4,8 @@
 </div>
 <ng-template #elseBlock>
     <div>
-        <div class="container" >
-            <mat-card class="example-card"  >
+        <div class="container">
+            <mat-card class="example-card">
                 <mat-card-title-group>
                     <mat-card-title>{{workerDetail.Name}}</mat-card-title>
                 </mat-card-title-group>
@@ -13,43 +13,52 @@
                     <div>
                         {{workerDetail.Age}}
                     </div>
+
+                    <div *ngIf='reviewsOfTheWorker.length>0' s>
+                        <div *ngFor="let review of reviewsOfTheWorker">
+                            <hr class="mx-auto">
+                            <p class="fs-5">
+                                {{review.Name}}
+                            </p>
+                            <p class="fs-7">
+                                {{review.Review}}
+                            </p>
+
+                        </div>
+                    </div>
                 </mat-card-content>
                 <mat-card-actions>
                     <button mat-button (click)="addReveiw()">Add a Reveiw</button>
-                  </mat-card-actions>
+                </mat-card-actions>
             </mat-card>
             <mat-card *ngIf="isAddReveiw" [formGroup]="Reveiws">
                 <div class="row">
-                    <!-- <input type="text" formControlName="workerID" value="{{workerDetail._id}}">
-                    {{workerDetail._id}} -->
-                <div class="col-6">
-                    <div class="form-section">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" formControlName="Name">
+                    <div class="col-6">
+                        <div class="form-section">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" formControlName="Name">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="ps-3">Rating</div>
+                        <div class="rating">
+                            <button mat-icon-button *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i"
+                                (click)="onClick(i+1)" matTooltip={{ratingId}} matTooltipPosition="above" class="star">
+                                <mat-icon>
+                                    {{showIcon(i)}}
+                                </mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-section" class="col-12 pt-3">
+                        <label for="name">Review</label>
+                        <textarea class="form-control" formControlName="Review"></textarea>
+                    </div>
+                    <div class="form-section" class="col-12 pt-3">
+                        <button w-100 mat-button (click)="submitReview()">Submit</button>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="ps-3">Rating</div> 
-                    <div class="rating">
-                        <button mat-icon-button *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i"
-                        (click)="onClick(i+1)" matTooltip={{ratingId}} matTooltipPosition="above" class="star">
-                        <mat-icon>
-                            {{showIcon(i)}}
-                        </mat-icon>
-                    </button>
-                    </div>
-                </div>
-                <div class="form-section" class="col-12 pt-3" >
-                    <label for="name">Review</label>
-                <textarea class="form-control" formControlName="Review"></textarea>
-                </div>
-                {{Reveiws.value|json}}
-                <div class="form-section" class="col-12 pt-3">
-                    <button w-100 mat-button (click)="submitReview()">Submit</button>
-                </div>
-            </div>
             </mat-card>
-            {{workerDetail|json}}
         </div>
     </div>
 </ng-template>

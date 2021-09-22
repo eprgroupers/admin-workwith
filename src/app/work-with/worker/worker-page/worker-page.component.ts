@@ -14,31 +14,39 @@ export class WorkerPageComponent implements OnInit {
   public loading = true
   public id: any
   public workerDetail: any
-  public isAddReveiw=false
-  public Reveiws= new FormGroup({
-    Name:new FormControl('',Validators.required),
-    Review:new FormControl('',Validators.required),
-    Rating:new FormControl('',Validators.required),
-    workerID:new FormControl('',Validators.required)
-  })
-
+  public isAddReveiw = false
+  public reviewsOfTheWorker: any
   public ratingArr: number[] = [1, 2, 3, 4, 5];
   private rating: number = 3
 
-  constructor(private route: ActivatedRoute, private router: Router, private _reviewService: ReviewService,private _workerService: WorkerService ,private snackbar:MatSnackBar) { }
+  public Reveiws = new FormGroup({
+    Name: new FormControl('', Validators.required),
+    Review: new FormControl('', Validators.required),
+    Rating: new FormControl('', Validators.required),
+    workerID: new FormControl('', Validators.required)
+  })
+
+  constructor(private route: ActivatedRoute, private router: Router, private _reviewService: ReviewService, private _workerService: WorkerService, private snackbar: MatSnackBar) { }
 
   ngOnInit() {
     let sub = this.route.params.subscribe(params => {
       this.id = params['id'];
       this._workerService.getWorker(this.id).subscribe(data => {
         this.workerDetail = data
-       
-        // console.log(this.workerDetail._id+ 'wor-id'+this.Reveiws.value.workerID);
-        
+        this.Reveiws.controls.workerID.patchValue(this.workerDetail._id)
       }, err => {
         console.log(err);
       }, () => {
         setTimeout(() => { this.loading = false }, 1000)
+        this._reviewService.getReviewsOfWorker(this.workerDetail._id).subscribe(
+          (data) => {
+            this.reviewsOfTheWorker = data, console.log(data);
+          },
+          err => console.log(err),
+          () => {
+            console.log("done");
+          }
+        )
       })
     });
   }
@@ -54,27 +62,27 @@ export class WorkerPageComponent implements OnInit {
       return 'star_border';
     }
   }
-  addReveiw(){
-    this.isAddReveiw=true
+  addReveiw() {
+    this.isAddReveiw = !this.isAddReveiw
     // this.isAddReveiw !=this.isAddReveiw
   }
 
-  submitReview(){
-    this.Reveiws.controls.workerID.setValue(this.workerDetail._id)
-    this.Reveiws.controls.Rating.setValue(this.rating)
-      console.log(this.Reveiws.value);
+  submitReview() {
+    this.Reveiws.controls.Rating.patchValue(this.rating)
+    console.log(this.Reveiws.value);
     if (this.Reveiws.status !== 'INVALID') {
-      this._reviewService.postReview(this.Reveiws.value).subscribe(res=>console.log(res),
-      err=>console.log(err),
-      ()=>{
-        console.log('success');
-        this.isAddReveiw=false
-      }
+      this._reviewService.postReview(this.Reveiws.value).subscribe(res => console.log(res),
+        err => console.log(err),
+        () => {
+          console.log('success');
+          this.Reveiws.reset()
+          this.isAddReveiw = false
+        }
       )
-    }else{
-      this.snackbar.open('Please fullfill the form','ok')
+    } else {
+      this.snackbar.open('Please fullfill the form', 'ok')
     }
-      
+
   }
 
 
