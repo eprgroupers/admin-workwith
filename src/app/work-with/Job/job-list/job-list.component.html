@@ -1,0 +1,35 @@
+
+
+<div *ngIf="loading; else elseBlock">
+    <mat-spinner class="mx-auto color" [strokeWidth]='5' [diameter]='30'>
+    </mat-spinner>
+</div>
+
+<ng-template #elseBlock>
+    <div class="text-center fs-2 fw-900">Job List <br>
+        <hr class="w-50"> </div>
+    
+<div >
+    <mat-card *ngFor="let job of jobList" class="my-3">
+        <div>
+            <mat-card-title-group>
+                <mat-card-title>{{job.Job}}</mat-card-title>
+                <img mat-card-sm-image src={{job.Image}}
+                    onerror="this.onerror=null;this.src='assets/img/profile-worker.jpg';" class="profile">
+            </mat-card-title-group>
+            <mat-card-content>
+                <div>
+                    {{job.Description}}<br>
+                    {{job._id}}
+                </div>
+            </mat-card-content>
+            <mat-card-actions> 
+                <button  mat-stroked-button color="accent" routerLink='../edit/id/{{job._id}}'><mat-icon >edit_note</mat-icon>Edit</button>
+            </mat-card-actions>
+            {{job|json}}
+        </div>
+    </mat-card>
+    
+
+</div>
+</ng-template>

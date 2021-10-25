@@ -25,7 +25,8 @@ export class WorkerService {
     let data = { id: id }
     return this.http.patch(environment.configURI + '/worker/unblockworker', data)
   }
-  getWorker(id: string) {
+  getWorkerById(id: string) {
+    console.log(id);
     return this.http.get(environment.configURI + '/worker/id/' + id)
   }
   checkUserNameAvailability(userName: string) {

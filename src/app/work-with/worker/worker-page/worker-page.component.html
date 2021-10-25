@@ -2,18 +2,43 @@
     <mat-spinner class="mx-auto color" [strokeWidth]='5' [diameter]='30'>
     </mat-spinner>
 </div>
+{{workerDetail|json}}
 <ng-template #elseBlock>
+    <div class="prof fs-4">Worker's Profile <br>
+        <hr class=""> 
+    </div>
+
     <div>
         <div class="container">
-            <mat-card class="example-card">
-                <mat-card-title-group>
-                    <mat-card-title>{{workerDetail.Name}}</mat-card-title>
-                </mat-card-title-group>
-                <mat-card-content>
-                    <div>
-                        {{workerDetail.Age}}
-                    </div>
-
+            <mat-card class="row m-1">
+                <div class=" p-1">
+                    <mat-card-header class="p-2">
+                        <div mat-card-avatar class="example-header-image"><mat-icon class="icon">person_pin</mat-icon></div>
+                        <mat-card-title>{{workerDetail.Name}}</mat-card-title>
+                        <mat-card-subtitle class="m-0">Age : {{workerDetail.Age}}</mat-card-subtitle>
+                        <div class="nic">NIC No : {{workerDetail.NICNo}}</div>
+                      </mat-card-header>
+                      <div class="row job p-2 mt-2">
+                        <div class="col-6 fs-6 justify-content-center ps-0">Job : {{workerDetail.Job}} </div>
+                        <div class="col-6 ">
+                            <span *ngFor="let i of [1,2,3,4,5]">
+                                <mat-icon *ngIf="i<workerDetail.Rating">star</mat-icon>
+                                <mat-icon *ngIf="i>=workerDetail.Rating">star_border</mat-icon>
+                            </span>
+                        </div>
+                      </div>
+                      <mat-card-content  class="p-2 mt-2">
+                            <div class="pt-2 fs-6">Address : {{workerDetail.Address}}</div>
+                              <div class="pt-3 fs-6">Working Area : {{workerDetail.WorkArea}} </div>
+                          <div class="pt-3 fs-6">Contact No : {{workerDetail.ContactNo}}</div>
+                      </mat-card-content>
+                      
+             </div>
+             <hr>
+             <div class="text-center">
+                <button mat-button (click)="addReveiw()">Write a Reveiw <mat-icon class="rev-icon">reviews</mat-icon> </button>
+             </div>
+                <div  class="p-1">
                     <div *ngIf='reviewsOfTheWorker.length>0' s>
                         <div *ngFor="let review of reviewsOfTheWorker">
                             <hr class="mx-auto">
@@ -23,15 +48,11 @@
                             <p class="fs-7">
                                 {{review.Review}}
                             </p>
-
                         </div>
                     </div>
-                </mat-card-content>
-                <mat-card-actions>
-                    <button mat-button (click)="addReveiw()">Add a Reveiw</button>
-                </mat-card-actions>
+                </div>
             </mat-card>
-            <mat-card *ngIf="isAddReveiw" [formGroup]="Reveiws">
+            <mat-card *ngIf="isAddReveiw" [formGroup]="Reveiws" class="m-1">
                 <div class="row">
                     <div class="col-6">
                         <div class="form-section">

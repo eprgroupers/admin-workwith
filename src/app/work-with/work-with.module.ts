@@ -15,6 +15,8 @@ import { BlockedWorkersComponent } from './worker/blocked-workers/blocked-worker
 import { WorkerPageComponent } from './worker/worker-page/worker-page.component';
 import { AddJobComponent } from './Job/add-job/add-job.component';
 import { JobComponent } from './Job/job.component';
+import { JobListComponent } from './Job/job-list/job-list.component';
+import { ImageChangeModelComponent } from './features/image-change-model/image-change-model.component';
 
 
 
@@ -31,6 +33,8 @@ import { JobComponent } from './Job/job.component';
     WorkerPageComponent,
     AddJobComponent,
     JobComponent,
+    JobListComponent,
+    ImageChangeModelComponent,
   ],
   imports: [
     CommonModule, MaterialModule, HttpClientModule, AppRoutingModule,

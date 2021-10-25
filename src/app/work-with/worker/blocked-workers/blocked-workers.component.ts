@@ -17,10 +17,9 @@ export class BlockedWorkersComponent implements OnInit {
 
   unblockAworker(id:String){
     console.log(id);
-    this._workerService.unblockWorker(id).subscribe(res=>console.log(res),
-    err=>console.log(err.error),
-    ()=>this.updateUnblock()
-    
+    this._workerService.unblockWorker(id).subscribe(res =>{console.log(res)},
+    err=>{console.log(err.error)},
+    ()=> this.updateUnblock()
       )
   }
 

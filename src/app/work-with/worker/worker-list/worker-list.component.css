@@ -8,4 +8,10 @@
   height: 80px;
   border-radius: 20px;
 }
-
+.prof{
+  text-align: center;
+}
+.prof hr{
+  width: 25%;
+  margin: 10px auto;
+}

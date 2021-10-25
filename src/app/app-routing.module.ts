@@ -5,6 +5,7 @@ import { BlockedCompaniesComponent } from './work-with/company/blocked-companies
 import { CompanyListComponent } from './work-with/company/company-list/company-list.component';
 import { CompanyComponent } from './work-with/company/company.component';
 import { AddJobComponent } from './work-with/Job/add-job/add-job.component';
+import { JobListComponent } from './work-with/Job/job-list/job-list.component';
 import { JobComponent } from './work-with/Job/job.component';
 import { AddWorkerComponent } from './work-with/worker/add-worker/add-worker.component';
 import { BlockedWorkersComponent } from './work-with/worker/blocked-workers/blocked-workers.component';
@@ -66,6 +67,10 @@ const routes: Routes = [
     {
       path: 'view/:id/active',
       component: WorkerPageComponent
+    },
+    {
+      path: "edit/id/:id",
+      component: AddWorkerComponent
     }
     ]
   },
@@ -76,9 +81,18 @@ const routes: Routes = [
       path: '',
       redirectTo: "add-new",
       pathMatch: "full"
+    }, {
+      path: 'list',
+      component: JobListComponent,
+      pathMatch: "full"
+
     },
     {
       path: "add-new",
+      component: AddJobComponent
+    },
+    {
+      path: "edit/id/:id",
       component: AddJobComponent
     }
     ]

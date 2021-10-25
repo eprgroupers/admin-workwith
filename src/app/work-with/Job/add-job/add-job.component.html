@@ -1,23 +1,26 @@
 <div>
     <form class="full-form bg-dark" [formGroup]="Jobs">
-        <div class="text-center">
+        <div class="text-center" *ngIf='showButton; else elsetitle' >
             <h2>Register A new Job</h2>
-
         </div>
+        <ng-template #elsetitle >
+            <div class="text-center" >
+                <h2>Update the Job</h2>
+            </div>
+        </ng-template>
         <div class="row">
             <div class="col-6">
                 <div class="form-section">
                     <label for="name">Job's Name</label>
                     <input type="text" class="form-control" formControlName="Job">
-                    <!-- (blur)="checkUserName()"  -->
                 </div>
                 <div class="form-section">
                     <label for="name">Description</label>
-                    <textarea class="form-control" formControlName="Description"></textarea>
+                    <textarea class="form-control h-100" formControlName="Description"></textarea>
                 </div>
             </div>
-            <div class="col-6 upload">
-                <div class="form-section">
+            <div class="col-6 " >
+                <div class="form-section upload" *ngIf='showButton; else elseblock'>
                     <label for="">Job Image </label><br>
                     <input formControlName="Image" type="file" class="form-control upload"
                         (change)="onFileChange($event)" accept=".jpg, .png, .jpeg">
@@ -25,12 +28,27 @@
                         onerror="this.onerror=null;this.src='assets/img/profile-worker.jpg';">
                 </div>
             </div>
+            <ng-template class="col-6" #elseblock>
+                <div Class="changeImg">
+                    <img [src]="Jobs.value.Image" class="profile"
+                        onerror="this.onerror=null;this.src='assets/img/profile-worker.jpg';">
+                    <div class="change-img-btn" ><button mat-flat-button (click)="changeImage()">Change Profile Image</button></div>
+                </div>
+            </ng-template>
         </div>
 
         <div class="form-section">
-            <button mat-flat-button class="button" (click)="submit()" [disabled]="!Jobs.valid">
-                Submit
-            </button>
+            <div *ngIf='showButton; else elsesubmit'>
+                <button mat-flat-button class="button" (click)="submit()" [disabled]="!Jobs.valid">
+                    Submit
+                </button>
+            </div>
+            <ng-template #elsesubmit>
+                <button mat-flat-button class="button" (click)="editWorker()" [disabled]="!Jobs.valid">
+                    Edit
+                </button>
+            </ng-template>
         </div>
+        <!-- {{Jobs.value|json}} -->
     </form>
 </div>

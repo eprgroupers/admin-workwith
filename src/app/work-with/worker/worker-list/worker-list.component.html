@@ -3,6 +3,9 @@
     </mat-spinner>
 </div>
 <ng-template #elseBlock>
+    <div class="prof fs-4">Worker List <br>
+        <hr class="text-center" > 
+    </div>
 <div>
     <mat-card class="example-card" *ngFor="let worker of workerList">
         <div class="card-div " routerLink='../view/{{worker._id}}/active'>
@@ -23,15 +26,15 @@
         </div>
             <div class="container p-0 m-0">
                 <div class="row text-center p-0 m-0">
-                    <div class="col-lg-6 p-0 m-0">
-                        <!-- <button mat-stroked-button color="accent">Block Worker</button> -->
+                    <div class="col-6 p-0 m-0">
+                        <button mat-stroked-button color="accent" routerLink='../edit/id/{{worker._id}}'><mat-icon >edit_note</mat-icon>Edit Details</button>
                     </div>
-                    <div class="col-lg-6 p-0 m-0">
+                    <div class="col-6 p-0 m-0">
                         <button mat-stroked-button color="accent" 
                         (click)="blockAWorker(worker._id)"
                         >Block Worker</button>
                     </div>
-                    {{worker | json}}
+                    <!-- {{worker | json}} -->
                 </div>
             </div>
     </mat-card>

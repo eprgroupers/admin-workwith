@@ -14,7 +14,7 @@
                     <label for="name">Job</label>
                     <select formControlName="Job" class="form-control">
                         <option value="" selected disabled hidden>Select Your Job</option>
-                        <option *ngFor="let job of jobList" value={{job.Job}}>{{job.Job}}</option>
+                        <option *ngFor="let job of jobList" >  {{job.Job}} </option>
                     </select>
                 </div>
                 <div class="form-section">
@@ -59,13 +59,29 @@
                     <input type="text" class="form-control" formControlName="WhatsUpNo">
                 </div>
             </div>
-            <div class="col-6 upload">
-                <div>
+            <div class="col-6 upload" >
+                <div *ngIf="isWorkerId; else elseimage">
                     <label for="">Image </label><br>
                     <input type="file" class="form-control upload" (change)="onFileChange($event)"
                         accept=".jpg, .png, .jpeg">
-                    <img [src]="imgSrc" class="profile"
+                    <img [src]="imgSrc" class="profile mt-3 rounded-circle"
                         onerror="this.onerror=null;this.src='assets/img/profile-worker.jpg';">
+                </div>
+                <ng-template #elseimage >
+                    <div class="changeImg">
+                    <img [src]="Worker.value.ProfileImg" class=" rounded-circle"
+                        onerror="this.onerror=null;this.src='assets/img/profile-worker.jpg';">
+                        <p mat-button class="change-img-btn" (click)="openDialog()"><mat-icon>add_a_photo</mat-icon><br>Change<br>Profile Image</p>
+                    </div>
+                </ng-template>
+                <div class="p-3 text-center">
+                    <p class="mb-0">Rating</p>
+                    <button mat-icon-button *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i"
+                        (click)="onClick(i+1)" matTooltip={{ratingId}} matTooltipPosition="above" class="star">
+                        <mat-icon>
+                            {{showIcon(i)}}
+                        </mat-icon>
+                    </button>
                 </div>
             </div>
         </div>
@@ -78,22 +94,10 @@
                 <button mat-flat-button class="button" (click)="addWorkArea()">
                     <mat-icon>location_searching</mat-icon> Add Work Area
                 </button>
-                <div formArrayName='WorkArea'>
-                    <div class="form-group" *ngFor='let area of workAreaControls; let i = index'>
-                        <input type="text" class="form-control " [formControlName]='i' placeholder="Enter Data">
-                    </div>
-                </div>
+               
             </div>
             <div class="col-lg-6">
-                <div class="p-3 text-center">
-                    <p class="mb-0">Rating</p>
-                    <button mat-icon-button *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i"
-                        (click)="onClick(i+1)" matTooltip={{ratingId}} matTooltipPosition="above" class="star">
-                        <mat-icon>
-                            {{showIcon(i)}}
-                        </mat-icon>
-                    </button>
-                </div>
+                
             </div>
         </div>
         <div class="form-section">

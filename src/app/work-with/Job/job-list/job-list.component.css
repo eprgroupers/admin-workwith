@@ -1,0 +1,11 @@
+button{
+    color: white;
+    /* background-color: white; */
+    border: 1px solid white;
+}
+.profile{
+    border-radius: 10px;
+}
+hr{
+    margin: 10px auto;
+}

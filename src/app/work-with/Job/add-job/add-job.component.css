@@ -39,6 +39,32 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    /* padding-bottom: 20px; */
   }
-  
+   
+  .changeImg {
+    border-radius: 4px;
+    position: relative;
+    text-align: center;
+  }
+  .change-img-btn{
+    position: absolute;
+    object-fit: cover;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    display: none
+  }
+  .changeImg
+      img:hover {
+        opacity: 0.8;
+        background-color: grey;
+  }
+  .changeImg:hover
+      .change-img-btn{
+        display: block;
+        background-color: rgba(31, 31, 31, 0.521);
+        opacity: 1;
+      }

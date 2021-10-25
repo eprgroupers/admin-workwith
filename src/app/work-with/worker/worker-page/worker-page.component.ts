@@ -31,7 +31,7 @@ export class WorkerPageComponent implements OnInit {
   ngOnInit() {
     let sub = this.route.params.subscribe(params => {
       this.id = params['id'];
-      this._workerService.getWorker(this.id).subscribe(data => {
+      this._workerService.getWorkerById(this.id).subscribe(data => {
         this.workerDetail = data
         this.Reveiws.controls.workerID.patchValue(this.workerDetail._id)
       }, err => {

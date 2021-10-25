@@ -20,3 +20,48 @@ button{
 .rating button{
   border: none;
 }
+.icon{
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+}
+.rev-icon{
+  /* padding-left: 20px; */
+}
+.age{
+  align-content: stretch;
+  width: 15%;
+  padding-top: 40px;
+}
+hr{
+  width: 95%;
+  margin: 10px auto;
+}
+.prof{
+  text-align: center;
+}
+.prof hr{
+  width: 20%;
+  margin: 10px auto;
+}
+mat-card-header{
+  border-radius: 5px;
+  box-shadow: 0.2px 1.2px 4px  black;
+}
+.job{
+  border-radius: 5px;
+  box-shadow: 0.7px 0.8px 2px  black;
+  width: 97%;
+  margin: 10px auto;
+  padding: 0px  
+}
+mat-card-content{
+  border-radius: 5px;
+  box-shadow: 0.7px 0.8px 2px  black;
+  width: 97%;
+  margin: 10px auto;
+
+}
+.nic{
+  align-content: flex-end;
+}

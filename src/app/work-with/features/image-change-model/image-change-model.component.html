@@ -1,0 +1,33 @@
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Favorite Animal</mat-label>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div> -->
+
+
+
+  <div class="text-center fs-5">
+    <strong>Change Your Profile Image</strong>
+  </div>
+  <span class="cls-but-sp">
+    <button mat-dialog-close class="cls-but nav justify-content-end"><mat-icon>disabled_by_default</mat-icon></button>
+</span>
+  <div  mat-dialog-content container >
+  <div class="changeImg">
+    <div [formGroup]="workerForm">
+      <input type="file" class="form-control mt-3" accept=".jpg, .png, .jpeg" formControlName='ProfileImg' (change)='onFileChange($event)'>
+      <img [src]="this.worker.ProfileImg" class="text-center mt-3 rounded-circle"
+        onerror="this.onerror=null;this.src='assets/img/profile-worker.jpg';">
+    </div>
+  </div>
+  <div>
+    <button mat-raised-button mat-dialog-close mat-dialog-close="true" type="submit" class="submit-btn m-3" (click)='submitImage()'>Submit</button>
+  </div>
+</div>
