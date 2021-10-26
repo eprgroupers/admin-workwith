@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './admin/admin/admin.component';
+import { LoginComponent } from './login/login-page/login/login.component';
 import { AddCompanyComponent } from './work-with/company/add-company/add-company.component';
 import { BlockedCompaniesComponent } from './work-with/company/blocked-companies/blocked-companies.component';
 import { CompanyListComponent } from './work-with/company/company-list/company-list.component';
@@ -15,12 +17,29 @@ import { WorkerComponent } from './work-with/worker/worker.component';
 
 const routes: Routes = [
   {
-    path: '', component: AddWorkerComponent
+    path:'',
+    component:LoginComponent
   },
+{
+path:'admin',
+component:AdminComponent,
+children: [
   {
-    path: 'blockedcompany',
-    component: BlockedCompaniesComponent
+    path:'',
+    redirectTo: 'worker/add-new',
+    pathMatch:'full'
   },
+  // {
+  //   path:'login',
+  //   component: LoginComponent
+  // },
+  // {
+  //   path: '', component: AddWorkerComponent
+  // },
+  // {
+  //   path: 'blockedcompany',
+  //   component: BlockedCompaniesComponent
+  // },
   {
     path: 'company',
     component: CompanyComponent,
@@ -97,6 +116,8 @@ const routes: Routes = [
     }
     ]
   },
+]
+}
 ];
 
 @NgModule({

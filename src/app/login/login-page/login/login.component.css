@@ -30,7 +30,9 @@
    width: 100px;
    height: 100px;
    margin-top: 0px;
+   border-radius: 50%;
+   object-fit: cover;
  }
  input{
-   border: 0.1px solid #070202;
+   border: 0.1px solid #353535;
  }
