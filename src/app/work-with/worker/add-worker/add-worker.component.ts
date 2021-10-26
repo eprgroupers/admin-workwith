@@ -5,7 +5,7 @@ import { WorkerService } from '../../shared/worker.service';
 import { Validators } from '@angular/forms';
 import { JobService } from '../../shared/job.service';
 import { ActivatedRoute } from '@angular/router';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { ImageChangeModelComponent } from '../../features/image-change-model/image-change-model.component';
 
 @Component({
@@ -19,23 +19,23 @@ export class AddWorkerComponent implements OnInit {
   public userNameAvailableMsg: any
   public imgSrc: any
   public workerId: any
-  public name:any
-  public animal:any
-  public isWorkerId=true
+  public name: any
+  public animal: any
+  public isWorkerId = true
   public Worker = new FormGroup({
     Name: new FormControl('', Validators.required),
     UserName: new FormControl('', Validators.required),
     ContactNo: new FormControl('', Validators.required),
     WhatsUpNo: new FormControl('', Validators.required),
     Address: new FormControl('', Validators.required),
-    Age: new FormControl('', Validators.required),  
+    Age: new FormControl('', Validators.required),
     NICNo: new FormControl('', Validators.required),
     Rating: new FormControl('', Validators.required),
-    WorkArea: new FormArray([]),
+    // Jobs: new FormArray([]),
     District: new FormControl('', Validators.required),
     Job: new FormControl('', Validators.required),
     Description: new FormControl('', Validators.required),
-    Experience: new FormControl('', Validators.required), 
+    Experience: new FormControl('', Validators.required),
     ProfileImg: new FormControl('')
     // id: new FormControl('')
   })
@@ -43,35 +43,35 @@ export class AddWorkerComponent implements OnInit {
   public ratingArr: number[] = [1, 2, 3, 4, 5];
   private rating: number = 3
   public jobList: any
-  constructor(private dialog:MatDialog , private _workerService: WorkerService, private snackBar: MatSnackBar, private _jobService: JobService, private route: ActivatedRoute) { }
+  constructor(private dialog: MatDialog, private _workerService: WorkerService, private snackBar: MatSnackBar, private _jobService: JobService, private route: ActivatedRoute) { }
 
-  get workAreaControls() {
-    return (<FormArray>this.Worker.get('WorkArea')).controls
-  }
+  // get jobsControls() {
+  //   return (<FormArray>this.Worker.get('Jobs')).controls
+  // }
 
   ngOnInit(): void {
     this.updateJob()
     this.route.params.subscribe(
-        res => {
-          console.log(res.id);
-        this.workerId = res.id; 
+      res => {
+        console.log(res.id);
+        this.workerId = res.id;
         console.log(this.workerId);
-        
-      },
-        err => console.log(err),
-        () => console.log("success")
-      )
-   
-      this._workerService.getWorkerById(this.workerId).subscribe
-          (data => {
-            this.Worker.patchValue(data);
-          }, err => console.log(err),
-            () => console.log("recive worker success")
-          )
 
-          if(this.workerId!== undefined){
-            this.isWorkerId=false
-          }
+      },
+      err => console.log(err),
+      () => console.log("success")
+    )
+
+    this._workerService.getWorkerById(this.workerId).subscribe
+      (data => {
+        this.Worker.patchValue(data);
+      }, err => console.log(err),
+        () => console.log("recive worker success")
+      )
+
+    if (this.workerId !== undefined) {
+      this.isWorkerId = false
+    }
   }
 
   updateJob() {
@@ -104,10 +104,10 @@ export class AddWorkerComponent implements OnInit {
     }
   }
 
-  addWorkArea() {
-    const control = new FormControl('');
-    (<FormArray>this.Worker.get('WorkArea')).push(control)
-  }
+  // addJobs() {
+  //   const control = new FormControl('');
+  //   (<FormArray>this.Worker.get('Jobs')).push(control)
+  // }
 
   onFileChange(event: any) {
     this.selectedImg = <File>event.target.files[0]
@@ -120,17 +120,17 @@ export class AddWorkerComponent implements OnInit {
   }
 
   openDialog(): void {
-    let submitImage = this.dialog.open(ImageChangeModelComponent, { data: this.workerId});
+    let submitImage = this.dialog.open(ImageChangeModelComponent, { data: this.workerId });
     console.log(this.workerId);
-    
+
     submitImage.afterClosed().subscribe(result => {
-        if (result === "true") {
-          console.log(result);
-          this.Worker.reset();
-          this.imgSrc = ''
-          
-        }
-      })
+      if (result === "true") {
+        console.log(result);
+        this.Worker.reset();
+        this.imgSrc = ''
+
+      }
+    })
     // const dialogRef = this.dialog.open(ImageChangeModelComponent, {
     //   width: '100%',
     //   data: {ProfileImg: this.selectedImg}

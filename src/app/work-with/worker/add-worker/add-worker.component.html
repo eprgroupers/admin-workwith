@@ -10,13 +10,13 @@
                     <label for="name">Name</label>
                     <input type="text" class="form-control" formControlName="Name">
                 </div>
-                <div class="form-section">
+                <!-- <div class="form-section">
                     <label for="name">Job</label>
                     <select formControlName="Job" class="form-control">
                         <option value="" selected disabled hidden>Select Your Job</option>
                         <option *ngFor="let job of jobList" >  {{job.Job}} </option>
                     </select>
-                </div>
+                </div> -->
                 <div class="form-section">
                     <label for="name">User Name <small>*This will be their id</small></label>
                     <input type="text" (blur)="checkUserName()" class="form-control" formControlName="UserName">
@@ -91,10 +91,22 @@
                 <textarea class="form-control" formControlName="Description"></textarea>
             </div>
             <div class="col-lg-6 p-2">
-                <button mat-flat-button class="button" (click)="addWorkArea()">
-                    <mat-icon>location_searching</mat-icon> Add Work Area
-                </button>
-               
+                <!-- <button mat-flat-button class="button" (click)="addJobs()">
+                    <mat-icon>work</mat-icon> Add Jobs
+                </button> -->
+                <!-- <div formArrayName='Jobs'>
+                    <div class="form-group" *ngFor='let job of jobsControls; let i = index'>
+                        <input type="text" class="form-control " [formControlName]='i' placeholder="Enter the Jobs">
+                    </div>
+                </div> -->
+
+                  <div class="form-section">
+                    <label for="name">Job</label>
+                    <select formControlName="Job" class="form-control">
+                        <option value="" selected disabled hidden>Select Your Job</option>
+                        <option *ngFor="let job of jobList" >  {{job.Job}} </option>
+                    </select>
+                </div>
             </div>
             <div class="col-lg-6">
                 
@@ -104,7 +116,7 @@
             <button mat-flat-button class="button" (click)="submit()">
                 Submit
             </button>
-            {{Worker.value|json}}{{jobList|json}}{{Worker.status}}
+            <!-- {{Worker.value|json}}{{jobList|json}}{{Worker.status}} -->
         </div>
     </form>
 </div>

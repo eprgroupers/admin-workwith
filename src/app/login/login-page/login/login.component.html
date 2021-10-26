@@ -1,0 +1,34 @@
+<div class=" container ">
+    <div class="fields ">
+        <form class="full-form bg-dark" [formGroup]="user" >
+            <h4 class="text-center "><strong><img src=".\assets\img\login.png" class="mx-auto text-center" alt="login"></strong></h4>
+            
+                <dl class="form-section row">
+                    <dt class="col-4">
+                <label for="name" class="lh-lg">User Name</label>
+            </dt>
+            <dd class="col-8">
+                <input type="text" class="form-control" formControlName="userName">
+                <small *ngIf="required">User name required*</small>
+            </dd>
+            </dl>
+            
+                <dl class="form-section row">
+                    <dt class="col-4">
+                <label for="name" class="lh-lg">Password</label>
+                    </dt>
+                    <dd class="col-8">
+                <input type="text" class="form-control" formControlName="password">
+                <small *ngIf="required">Password required*</small>
+            </dd>
+            </dl>
+            <div class="form-section text-center mx-auto">
+                <button mat-flat-button class="button" (click)="login()" >
+                    Log In
+                </button>
+            </div>
+        </form>
+{{user.status}}
+
+    </div>
+</div>

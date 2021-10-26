@@ -1,0 +1,36 @@
+.form-input-text {
+    border: rgb(255, 255, 255);
+    background-color: #1f1e1e;
+    padding: 0.5rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 2px 0 #252525;
+  }
+  .form-control {
+    background-color: rgb(29, 29, 29);
+  }
+  .full-form {
+    background-color: rgb(31, 31, 31);
+    padding: 30px;
+    border-radius: 5px;
+  }
+  .form-section {
+    padding-top: 9px !important;
+  }
+  
+ .container{
+     height: 100vh;
+     align-items: center;
+     display: flex;
+     justify-content: center;
+ }
+ small{
+   color: rgb(224, 56, 56) !important;
+ }
+ img{
+   width: 100px;
+   height: 100px;
+   margin-top: 0px;
+ }
+ input{
+   border: 0.1px solid #070202;
+ }

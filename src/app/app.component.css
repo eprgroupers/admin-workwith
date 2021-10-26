@@ -34,3 +34,6 @@ mat-nav-list {
 .container {
   padding: 2rem;
 }
+.full{
+  height: 100vh;
+}
