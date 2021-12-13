@@ -56,22 +56,20 @@ export class AddWorkerComponent implements OnInit {
         console.log(res.id);
         this.workerId = res.id;
         console.log(this.workerId);
+        if (this.workerId !== undefined) {
+          this._workerService.getWorkerById(this.workerId).subscribe
+            (data => {
+              this.Worker.patchValue(data);
+            }, err => console.log(err),
+              () => console.log("recive worker success")
+            )
+          this.isWorkerId = false
+        }
 
       },
       err => console.log(err),
       () => console.log("success")
     )
-
-    this._workerService.getWorkerById(this.workerId).subscribe
-      (data => {
-        this.Worker.patchValue(data);
-      }, err => console.log(err),
-        () => console.log("recive worker success")
-      )
-
-    if (this.workerId !== undefined) {
-      this.isWorkerId = false
-    }
   }
 
   updateJob() {
@@ -154,7 +152,8 @@ export class AddWorkerComponent implements OnInit {
           console.log(err);
         }, () => {
           this.Worker.reset()
-          this.imgSrc = ''
+
+
         })
       }
       else {
@@ -169,6 +168,8 @@ export class AddWorkerComponent implements OnInit {
           console.log(err);
         }, () => {
           this.Worker.reset()
+          this.selectedImg = null
+          this.imgSrc = null
         })
       }
     } else {
